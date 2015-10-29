@@ -8,7 +8,8 @@ if [[ $# -eq 0 || $1 == "--help" || $1 == '-h' ]]; then
 fi
 
 if [ ! -r $1 ]; then
-    echo "Can't read config file $1. Exiting." 1>&2
+    echo "*** Can't read config file $1. Exiting." 1>&2
+    exit 1
 fi
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HELPERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -98,8 +99,11 @@ echo "cd $WORKING_DIRECTORY" >> $BATCH_FILE
 
 # Install some packages
 if [[ ! -z $APTITUDE_PACKAGES ]]; then
-    echo "echo \"--> apt-get install $APTITUDE_PACKAGES\"" >> $BATCH_FILE
-    echo "apt-get install $APTITUDE_PACKAGES" >> $BATCH_FILE
+    echo "echo \"--> apt-get update\"" >> $BATCH_FILE
+    echo "apt-get update" >> $BATCH_FILE
+    echo "echo \"--> apt-get install -y $APTITUDE_PACKAGES\"" >> $BATCH_FILE
+    echo "apt-get install -y $APTITUDE_PACKAGES" >> $BATCH_FILE
+    echo 'if [ $? -ne 0 ]; then echo "Failed to install packages, terminating"; exit 1; fi' >> $BATCH_FILE
 fi
 
 # Create some directories
