@@ -26,4 +26,4 @@ REMOTE_CONFIGURATIONS=('index.php /srv/hello-web' 'hello.conf /etc/apache2/sites
 REMOTE_COMMANDS=('a2dissite 000-default' 'a2ensite hello' 'service apache2 reload')
 
 # Optional test commands to run post-configuration.
-TEST_COMMANDS=('`curl -s http://$host` == "Hello, world!"')
+TEST_COMMANDS=('[[ "`curl -s http://$host`" == "Hello, world!" ]]')
