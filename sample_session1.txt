@@ -1,0 +1,82 @@
+elana@feralas:~/interviews/slack$ ./configure_hosts.sh hello_config.sh 
+*** Checking configuration parameters...
+*** Configuration file is okay.
+*** Creating batch file...
+*** Batch file created
+*** Configuring host [REDACTED] ***
+*** Copying over ssh key...
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter 
+out any that are already installed
+
+/usr/bin/ssh-copy-id: WARNING: All keys were skipped because they already exist 
+on the remote system.
+
+*** Copying over configuration files...
+tmp.wL6HVvL1Zo                                                   100%  745     
+0.7KB/s   00:00    
+index.php                                                        100%   69     
+0.1KB/s   00:00    
+hello.conf                                                       100%  393     
+0.4KB/s   00:00    
+
+*** Applying configuration to remote machine...
+--> cd /tmp/config
+--> apt-get install apache2 php5
+Reading package lists...
+Building dependency tree...
+Reading state information...
+apache2 is already the newest version.
+php5 is already the newest version.
+0 upgraded, 0 newly installed, 0 to remove and 114 not upgraded.
+--> mkdir -p /srv/hello-web
+--> mv index.php /srv/hello-web
+--> mv hello.conf /etc/apache2/sites-available
+--> a2dissite 000-default
+Site 000-default already disabled
+--> a2ensite hello
+Site hello already enabled
+--> service apache2 reload
+ * Reloading web server apache2
+ * 
+*** Running test commands...
+`curl -s http://$host` == "Hello, world!"
+*** Test succeeded.
+*** Configuring host [REDACTED] ***
+*** Copying over ssh key...
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter 
+out any that are already installed
+
+/usr/bin/ssh-copy-id: WARNING: All keys were skipped because they already exist 
+on the remote system.
+
+*** Copying over configuration files...
+tmp.wL6HVvL1Zo                                                   100%  745     
+0.7KB/s   00:00    
+index.php                                                        100%   69     
+0.1KB/s   00:00    
+hello.conf                                                       100%  393     
+0.4KB/s   00:00    
+
+*** Applying configuration to remote machine...
+--> cd /tmp/config
+--> apt-get install apache2 php5
+Reading package lists...
+Building dependency tree...
+Reading state information...
+apache2 is already the newest version.
+php5 is already the newest version.
+0 upgraded, 0 newly installed, 0 to remove and 114 not upgraded.
+--> mkdir -p /srv/hello-web
+--> mv index.php /srv/hello-web
+--> mv hello.conf /etc/apache2/sites-available
+--> a2dissite 000-default
+Site 000-default already disabled
+--> a2ensite hello
+Site hello already enabled
+--> service apache2 reload
+ * Reloading web server apache2
+ * 
+*** Running test commands...
+`curl -s http://$host` == "Hello, world!"
+*** Test succeeded.
+

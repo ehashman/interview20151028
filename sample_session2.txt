@@ -1,0 +1,24 @@
+elana@feralas:~/interviews/slack$ ./configure_hosts.sh fail_test.sh 
+*** Checking configuration parameters...
+*** WORKING_DIRECTORY is invalid. Defaulting to /tmp.
+*** Configuration file is okay.
+*** Creating batch file...
+*** Batch file created
+*** Configuring host [REDACTED] ***
+*** Copying over ssh key...
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter 
+out any that are already installed
+
+/usr/bin/ssh-copy-id: WARNING: All keys were skipped because they already exist 
+on the remote system.
+
+*** Copying over configuration files...
+tmp.pFTKxu5jAQ                                                   100%  245     
+0.2KB/s   00:00    
+
+*** Applying configuration to remote machine...
+--> cd /tmp
+--> false
+Previous command failed, terminating
+*** Remote execution failed. Exiting.
+
